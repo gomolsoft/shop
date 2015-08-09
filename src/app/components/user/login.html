@@ -1,0 +1,26 @@
+<div class="modal-header">
+  <h3 class="modal-title">Login</h3>
+</div>
+
+<div class="modal-body">
+  <div class="alert alert-danger" ng-show="us.error">
+    Benutzername und/oder Passwort sind falsch. Bitte Versuchen Sie es erneut.
+  </div>
+
+  <form role="form" ng-submit="us.login()" data-dismiss="modal">
+    <div class="form-group">
+      <label for="username">Username:</label>
+      <input type="text" class="form-control" id="username" name="username" ng-model="us.username"/>
+    </div>
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input type="password" class="form-control" id="password" name="password" ng-model="us.password"/>
+    </div>
+    <div class="modal-footer">
+      <button type="submit" class="btn btn-primary">Login</button>
+      <button class="btn btn-warning" ng-click="us.cancel()">Abbrechen</button>
+    </div>
+
+
+  </form>
+</div>

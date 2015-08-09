@@ -11,6 +11,13 @@
 /// <reference path="../app/components/webDevTec/webDevTec.service.ts" />
 /// <reference path="../app/components/githubContributor/githubContributor.service.ts" />
 
+/// <reference path="../app/components/user/login.controller.ts" />
+/// <reference path="../app/components/user/login.service.ts" />
+/// <reference path="../app/start/start.controller.ts" />
+/// <reference path="../app/components/product/product.directive.ts" />
+/// <reference path="../app/components/dataService/data.service.ts" />
+
+
 declare var malarkey: any;
 declare var toastr: Toastr;
 declare var moment: moment.MomentStatic;
@@ -22,14 +29,33 @@ module shop {
     .constant('malarkey', malarkey)
     .constant('toastr', toastr)
     .constant('moment', moment)
+
     .config(Config)
 
     .config(RouterConfig)
 
+    .config(['RestangularProvider',
+      (RestangularProvider:restangular.IProvider) => {
+//          RestangularProvider.setBaseUrl('http://mbp.fritz.box:8080');
+          RestangularProvider.setBaseUrl('https://secure.mysmartthings.de/api');
+      }
+    ])
+
     .run(RunBlock)
+
     .service('githubContributor', GithubContributor)
     .service('webDevTec', WebDevTecService)
-    .controller('MainController', MainController)
+    .service('UserLoginService', UserLoginService)
+    .service('DataProvider', DataProvider)
+
+//    .controller('MainController', MainController)
+    .controller('StartController', StartController)
+    .controller('LoginController', LoginController)
+
     .directive('acmeNavbar', acmeNavbar)
-    .directive('acmeMalarkey', acmeMalarkey);
+    .directive('product', product)
+    .directive('acmeMalarkey', acmeMalarkey)
+    .directive('mysmartthingsLogin', mysmartthingsLogin)
+
+  ;
 }

@@ -1,21 +1,29 @@
 <nav class="navbar navbar-static-top navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="https://github.com/Swiip/generator-gulp-angular">
-        <span class="glyphicon glyphicon-home"></span> Gulp Angular
-      </a>
+      <a class="navbar-brand" href="https://secure.mysmartthings.de/shop">
+        <span class="glyphicon glyphicon-home"></span>My-Smart-Things</a>
+        <!-- img alt="Brand" src="..." -->
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
       <ul class="nav navbar-nav">
-        <li class="active"><a ng-href="#">Home</a></li>
-        <li><a ng-href="#">About</a></li>
-        <li><a ng-href="#">Contact</a></li>
+        <li ng-class="{ active: vm.isActive('/')}" ><a ng-href="#/">Home</a></li>
+        <li ng-class="{ active: vm.isActive('/products')}" ><a ng-href="#/products">Producte</a></li>
+        <li ng-class="{ active: vm.isActive('/customcenter')}" ><a ng-href="#/customcenter">Kundencenter</a></li>
+        <li ng-class="{ active: vm.isActive('/help')}"><a ng-href="#/help">Hilfe</a></li>
+
+        <li ng-class="login" ng-if="!vm.isLoggedIn()">
+          <button type="button" class="btn btn-default btn-sm" ng-click="vm.onLogin()">
+            <span class="glyphicon glyphicon-lock" aria-hidden="true"></span> Login
+          </button>
+        </li>
+
+        <li>
+            <input type="text" class="form-control" placeholder="Search">
+        </li>
       </ul>
 
-      <ul class="nav navbar-nav navbar-right acme-navbar-text">
-        <li>Application was created {{ vm.relativeDate }}.</li>
-      </ul>
     </div>
   </div>
 </nav>
