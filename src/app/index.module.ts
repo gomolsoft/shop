@@ -13,9 +13,15 @@
 
 /// <reference path="../app/components/user/login.controller.ts" />
 /// <reference path="../app/components/user/login.service.ts" />
+
 /// <reference path="../app/start/start.controller.ts" />
+
 /// <reference path="../app/components/product/product.directive.ts" />
 /// <reference path="../app/components/product/products.controller.ts" />
+
+/// <reference path="../app/components/product/product.details.directive.ts" />
+/// <reference path="../app/components/product/product.details.controller.ts" />
+
 /// <reference path="../app/components/dataService/data.service.ts" />
 
 
@@ -54,7 +60,9 @@ module shop {
     .controller('StartController', StartController)
     .controller('LoginController', LoginController)
     .controller('ProductsController', ProductsController)
+    .controller('ProductDetailsController', ProductDetailsController)
 
+    .directive('productDetails', productDetails)
     .directive('acmeNavbar', acmeNavbar)
     .directive('product', product)
     .directive('acmeMalarkey', acmeMalarkey)

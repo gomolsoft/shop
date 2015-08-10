@@ -54,5 +54,12 @@ module shop {
         devicesCB(data)
       });
     }
+
+    product (productCB:(product:IProduct) => void, id: string): void {
+      this.restangular.one('product').post(id).then( (product: IProduct) => {
+          productCB(product)
+      });
+    }
+
   }
 }

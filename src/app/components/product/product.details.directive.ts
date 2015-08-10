@@ -8,28 +8,28 @@ module shop {
   }
 
   /** @ngInject */
-  export function product(): ng.IDirective {
+  export function productDetails(): ng.IDirective {
 
     return {
       restrict: 'E',
       scope: {
         product: '='
       },
-      templateUrl: 'app/components/product/product.directive.html',
-      controller: ProductController,
-      controllerAs: 'pctdct',
+      templateUrl: 'app/components/product/product.details.html',
+      controller: ProductDirectiveDetailsController,
+      controllerAs: 'pctddtct',
       link: linkFunc,
       //bindToController: true
     };
 
-    function linkFunc(scope: IProductScope, el: JQuery, attr: any, pctdct: ProductController) {
+    function linkFunc(scope: IProductScope, el: JQuery, attr: any, pctddtct: ProductDirectiveDetailsController) {
 
     }
 
   }
 
   /** @ngInject */
-  class ProductController {
+  class ProductDirectiveDetailsController {
     private product: IProduct
 
     constructor(moment: moment.MomentStatic, $location: ng.ILocationService) {

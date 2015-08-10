@@ -18,7 +18,16 @@ module shop {
           templateUrl: 'app/components/product/products.html',
           controller: 'ProductsController',
           controllerAs: 'pctctrl'
-        });
+        })
+
+        .state('productDetails', {
+          url: '/products/:id/details',
+          templateUrl: 'app/components/product/product.details.html',
+          controller: 'ProductDetailsController',
+          controllerAs: 'pctdtctrl'
+        })
+
+      ;
 
       $urlRouterProvider.otherwise('/');
     }
