@@ -8,9 +8,9 @@ module shop {
 
     return {
       restrict: 'E',
-      scope: {
-        creationDate: '='
-      },
+//      scope: {
+//        creationDate: '='
+//      },
       templateUrl: 'app/components/navbar/navbar.html',
       controller: NavbarController,
       controllerAs: 'vm',

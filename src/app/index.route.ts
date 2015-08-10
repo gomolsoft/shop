@@ -11,14 +11,13 @@ module shop {
           templateUrl: 'app/start/start.html',
           controller: 'StartController',
           controllerAs: 'main'
-        });
+        })
 
-      $stateProvider
         .state('products', {
           url: '/products',
-          templateUrl: 'app/start/start.html',
-          controller: 'StartController',
-          controllerAs: 'main'
+          templateUrl: 'app/components/product/products.html',
+          controller: 'ProductsController',
+          controllerAs: 'pctctrl'
         });
 
       $urlRouterProvider.otherwise('/');

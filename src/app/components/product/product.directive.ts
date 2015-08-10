@@ -8,12 +8,12 @@ module shop {
 
     return {
       restrict: 'E',
-      scope: {
-        creationDate: '='
-      },
+//      scope: {
+//        creationDate: '='
+//      },
       templateUrl: 'app/components/product/product.html',
       controller: ProductController,
-      controllerAs: 'vm',
+      controllerAs: 'pctdct',
       bindToController: true
     };
 

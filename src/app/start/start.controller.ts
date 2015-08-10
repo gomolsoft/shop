@@ -4,6 +4,7 @@ module shop {
   'use strict';
 
   export class StartController {
+    private datas: IProduct[]
     private dataProvider: DataProvider
 
     /* @ngInject */
@@ -12,11 +13,13 @@ module shop {
 
     }
 
-    demo() {
-      var data = new Object();
+    dataloaded(products: IProduct[] ) {
+      this.datas = products
+      console.log(this.datas);
+    }
 
-      this.dataProvider.devices(data);
-      console.log(data);
+    demo() {
+      this.dataProvider.devices((products) => this.dataloaded(products));
     }
   }
 }

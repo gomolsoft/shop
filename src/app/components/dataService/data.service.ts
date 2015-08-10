@@ -1,19 +1,24 @@
 module shop {
   'use strict';
 
-  interface IPrice {
-    price: number
-
+  export interface IComment {
+    comment: string
+    user: string
+    rating: number
   }
 
-  interface IProduct {
+  export interface IProduct {
     id: string
+    productId: string
     name: string
     description: boolean
 
-    inStock: boolean
-    price: IPrice
+    img: string
 
+    inStock: boolean
+    price: number
+
+    comments?: IComment[]
   }
 
   export class DataProvider {
@@ -44,10 +49,9 @@ module shop {
 
     }
 
-    devices (container:any): any {
-      this.restangular.all('device').get('devices').then( (data: any) => {
-        container.data = data;
-
+    devices (devicesCB:(products:IProduct[]) => void): void {
+      this.restangular.all('product').get('products').then( (data: IProduct[]) => {
+        devicesCB(data)
       });
     }
   }

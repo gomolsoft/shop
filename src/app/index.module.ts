@@ -15,6 +15,7 @@
 /// <reference path="../app/components/user/login.service.ts" />
 /// <reference path="../app/start/start.controller.ts" />
 /// <reference path="../app/components/product/product.directive.ts" />
+/// <reference path="../app/components/product/products.controller.ts" />
 /// <reference path="../app/components/dataService/data.service.ts" />
 
 
@@ -36,8 +37,9 @@ module shop {
 
     .config(['RestangularProvider',
       (RestangularProvider:restangular.IProvider) => {
+          RestangularProvider.setBaseUrl('http://localhost:8090');
 //          RestangularProvider.setBaseUrl('http://mbp.fritz.box:8080');
-          RestangularProvider.setBaseUrl('https://secure.mysmartthings.de/api');
+//          RestangularProvider.setBaseUrl('https://secure.mysmartthings.de/api');
       }
     ])
 
@@ -51,6 +53,7 @@ module shop {
 //    .controller('MainController', MainController)
     .controller('StartController', StartController)
     .controller('LoginController', LoginController)
+    .controller('ProductsController', ProductsController)
 
     .directive('acmeNavbar', acmeNavbar)
     .directive('product', product)
