@@ -10,11 +10,15 @@ module shop {
   /** @ngInject */
   export class ProductDetailsController {
     private dataProvider: DataProvider
-    private product: IProduct
+    public product: IProduct
+
+
 
     constructor (DataProvider: DataProvider, $stateParams: IDetailsParams) {
       this.dataProvider = DataProvider;
       this.dataProvider.product((product) => this.product = product, $stateParams.id)
+
     }
+
   }
 }

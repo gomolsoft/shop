@@ -30,7 +30,10 @@ module shop {
 
   /** @ngInject */
   class ProductController {
-    private product: IProduct
+
+    isOffer(product: IProduct) {
+      return product.discount > 0;
+    }
 
     constructor(moment: moment.MomentStatic, $location: ng.ILocationService) {
 

@@ -3,21 +3,13 @@ module shop {
 
   export interface IComment {
     comment: string
-    user: string
-    rating: number
   }
 
   export interface IProduct {
     id: string
     productId: string
     name: string
-    description: boolean
-
-    img: string
-
-    inStock: boolean
-    price: number
-
+    discount: number
     comments?: IComment[]
   }
 

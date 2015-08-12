@@ -23,6 +23,7 @@
 /// <reference path="../app/components/product/product.details.controller.ts" />
 
 /// <reference path="../app/components/dataService/data.service.ts" />
+/// <reference path="../app/components/dataService/shopingcart.service.ts" />
 
 
 declare var malarkey: any;
@@ -55,6 +56,7 @@ module shop {
     .service('webDevTec', WebDevTecService)
     .service('UserLoginService', UserLoginService)
     .service('DataProvider', DataProvider)
+    .service('ShoppingCartProvider', ShoppingCartProvider)
 
 //    .controller('MainController', MainController)
     .controller('StartController', StartController)

@@ -15,7 +15,6 @@ module shop {
 
     dataloaded(products: IProduct[] ) {
       this.datas = products
-      console.log(this.datas);
     }
 
     demo() {

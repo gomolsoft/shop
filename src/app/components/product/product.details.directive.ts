@@ -15,7 +15,7 @@ module shop {
       scope: {
         product: '='
       },
-      templateUrl: 'app/components/product/product.details.html',
+      templateUrl: 'app/components/product/product.details.directive.html',
       controller: ProductDirectiveDetailsController,
       controllerAs: 'pctddtct',
       link: linkFunc,
@@ -30,10 +30,24 @@ module shop {
 
   /** @ngInject */
   class ProductDirectiveDetailsController {
-    private product: IProduct
+    private shopping_quantity: number
+    private shoppingCartProvider: ShoppingCartProvider
+    private cart : ICart
 
-    constructor(moment: moment.MomentStatic, $location: ng.ILocationService) {
+    constructor(moment: moment.MomentStatic, $location: ng.ILocationService, ShoppingCartProvider: ShoppingCartProvider) {
+      this.shopping_quantity=1;
+      this.shoppingCartProvider = ShoppingCartProvider;
+    }
 
+    isOffer(product: IProduct) {
+      if (product === undefined)
+        return false;
+
+      return product.discount > 0;
+    }
+
+    addToCart(product: IProduct) {
+      this.shoppingCartProvider.addToShoppingCart((cart) => this.cart = cart, product.id, this.shopping_quantity)
     }
   }
 }

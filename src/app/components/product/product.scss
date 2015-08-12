@@ -19,10 +19,10 @@
   transform:rotate(46deg);
 }
 .offer{
-  background:#fff; border:1px solid #ddd; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); margin: 15px 0; overflow:hidden;
+  background:#fff; border:1px solid #ddd; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); margin: 15px 0; overflow:hidden; height: 395px;
 }
 .shape {
-  border-color: rgba(255,255,255,0) #d9534f rgba(255,255,255,0) rgba(255,255,255,0);
+  border-color: rgba(255,255,255,0) #d9534f rgba(255,255,255,0) rgba(255,255,255,0); z-index:1; top: 0px; position: absolute; right: 0px; margin-top: 15px; margin-right: 15px;
 }
 .offer-radius{
   border-radius:7px;
@@ -53,7 +53,7 @@
 }
 
 .offer-content{
-  padding:0 10px 10px;
+  padding:0 10px 10px; position: relative; margin-top: 10px;
 }
 @media (min-width: 487px) {
   .container {
@@ -90,18 +90,32 @@
   }
 }
 
-.priceholder {
+.price-holder {
 //  position: absolute;
   bottom: 4px;
   left: 12px;
   width: 90%;
 }
 
-.price {
+.pri-ce {
   position: absolute;
-  right: 0;
+  right: 0px;
 //  bottom: 2px;
   font-size: 25px;
   font-family: 'Shag-Lounge';
   color: #fec46d;
+}
+
+.old-price {
+  position: absolute;
+  right: 0px;
+  bottom: 2px;
+  font-size: 10px;
+  font-family: 'Verdana';
+  color: #fe6f3d;
+}
+
+.shop-panel {
+  margin-bottom: 20px;
+  background-color: #FFF;
 }
