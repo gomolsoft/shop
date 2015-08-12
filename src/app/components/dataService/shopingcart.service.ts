@@ -27,12 +27,17 @@ module shop {
     }
 
     addToShoppingCart (updateShoppingCartCB:(cart:ICart) => void, id: string, quty:number): void {
-      var cart = {
-        productId: id,
-        quantity: quty
-      };
+      var cart = 'productId='+ id + '&' + 'quantity=' + quty
+      ;
 
-      this.restangular.one('product').post('cart', cart).then( (cart: ICart) => {
+      this.restangular.one('product')
+        .customPOST(
+        cart,
+        'cart',
+        undefined, // params here, e.g. {format: "json"}
+        {'Content-Type': "application/x-www-form-urlencoded; charset=UTF-8"}
+      )
+        .then( (cart: ICart) => {
         updateShoppingCartCB(cart)
       });
     }

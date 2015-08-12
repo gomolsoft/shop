@@ -52,8 +52,6 @@ module shop {
             console.log("LoginController");
         }
 
-
-
         cancel = () => {
           this.$modalInstance.dismiss('cancel');
           this.error = false;
@@ -75,34 +73,9 @@ module shop {
           console.log("onLoginError");
         }
 
-        public login() {
-            this.restangular.setDefaultHeaders({
-                'X-Auth-Username': this.username,
-                'X-Auth-Password': this.password,
-                'Content-Type': 'application/json',
-                'X-Requested-With': 'XMLHttpRequest'
-            });
+        login() {
+          this.UserLoginService.login(this.onLoginOk, this.onLoginError, this.username, this.password);
 
-            this.restangular.one('').post('authenticate').then( (data: any) => {
-                this.restangular.setDefaultHeaders({
-                    'X-Auth-Token': data.token,
-                    'Content-Type': 'application/json',
-                    'X-Requested-With': 'XMLHttpRequest'
-                });
-
-              this.onLoginOk(data.token);
-
-              return true;
-            },
-              () => {
-                var onLoginError = () => {
-                  this.onLoginError();
-                  console.error("Authorization Fails. Username ond/or Password are wrong.");
-                }
-                onLoginError();
-                return false;
-            }
-            );
         }
     }
 

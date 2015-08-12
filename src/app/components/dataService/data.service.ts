@@ -17,13 +17,44 @@ module shop {
     private restangular:restangular.IService
     private $location: ng.ILocationService
     private UserLoginService: UserLoginService
-
+    private $cookieStore: angular.cookies.ICookieStoreService
+    private  $http: ng.IHttpProvider
 
     /** @ngInject */
-    constructor(Restangular: restangular.IService, $location: ng.ILocationService, UserLoginService: UserLoginService) {
+    constructor(Restangular: restangular.IService, $location: ng.ILocationService, UserLoginService: UserLoginService, $cookieStore: angular.cookies.ICookieStoreService, $http: ng.IHttpProvider) {
       this.restangular = Restangular;
       this.$location = $location;
       this.UserLoginService = UserLoginService;
+      this.$cookieStore = $cookieStore
+      this.$http = $http
+
+
+      var refreshSessionId =  () => {
+        this.restangular.one('user/sessionId').get().then( (sid: any) => {
+            console.log(sid);
+            $cookieStore.put("sid", sid.sid)
+            this.restangular.setDefaultHeaders({
+              'X-Auth-SmartThings': /**'stid=' +*/ sid.sid   ,
+              'Content-Type': 'application/json'  ,
+              'X-Requested-With': 'XMLHttpRequest'
+            });
+          }
+        )
+      }
+
+      //Restangular.setFullResponse(true);
+      Restangular.addResponseInterceptor(function(data, operation, what, url, response, deferred) {
+        //if ($cookieStore.get("sid") === undefined)
+          //refreshSessionId()
+
+        return response.data;
+      });
+
+      /*
+      Restangular.setDefaultHttpFields({
+        withCredentials: true
+      });
+      */
 
       Restangular.setErrorInterceptor(
         function(response) {
@@ -41,6 +72,7 @@ module shop {
 
     }
 
+
     devices (devicesCB:(products:IProduct[]) => void): void {
       this.restangular.all('product').get('products').then( (data: IProduct[]) => {
         devicesCB(data)
@@ -52,6 +84,6 @@ module shop {
           productCB(product)
       });
     }
-
   }
+
 }
