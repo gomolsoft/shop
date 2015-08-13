@@ -6,10 +6,12 @@
 /// <reference path="index.config.ts" />
 /// <reference path="index.run.ts" />
 /// <reference path="main/main.controller.ts" />
-/// <reference path="../app/components/navbar/navbar.directive.ts" />
 /// <reference path="../app/components/malarkey/malarkey.directive.ts" />
 /// <reference path="../app/components/webDevTec/webDevTec.service.ts" />
 /// <reference path="../app/components/githubContributor/githubContributor.service.ts" />
+
+/// <reference path="../app/components/navbar/navbar.directive.ts" />
+/// <reference path="../app/components/navbar/cart.directive.ts" />
 
 /// <reference path="../app/components/user/login.controller.ts" />
 /// <reference path="../app/components/user/login.service.ts" />
@@ -69,6 +71,7 @@ module shop {
     .directive('product', product)
     .directive('acmeMalarkey', acmeMalarkey)
     .directive('mysmartthingsLogin', mysmartthingsLogin)
+    .directive('myCart', myCart)
 
   ;
 }

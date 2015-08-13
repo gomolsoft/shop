@@ -10,7 +10,7 @@ module shop {
   }
 
   export interface ICart {
-    item: ICartItem
+    item: ICartItem[]
 
     total: number
   }
@@ -18,28 +18,29 @@ module shop {
   export class ShoppingCartProvider {
     private restangular:restangular.IService
     private UserLoginService: UserLoginService
+    private $rootScope: ng.IRootScopeService
 
     /** @ngInject */
-    constructor(Restangular: restangular.IService, UserLoginService: UserLoginService) {
+    constructor($rootScope: ng.IRootScopeService, Restangular: restangular.IService, UserLoginService: UserLoginService) {
       this.restangular = Restangular;
       this.UserLoginService = UserLoginService;
-
+      this.$rootScope = $rootScope;
     }
 
     addToShoppingCart (updateShoppingCartCB:(cart:ICart) => void, id: string, quty:number): void {
       var cart = 'productId='+ id + '&' + 'quantity=' + quty
       ;
 
-      this.restangular.one('product')
-        .customPOST(
+      this.restangular.one('product').customPOST(
         cart,
         'cart',
         undefined, // params here, e.g. {format: "json"}
         {'Content-Type': "application/x-www-form-urlencoded; charset=UTF-8"}
-      )
-        .then( (cart: ICart) => {
+      ).then( (cart: ICart) => {
         updateShoppingCartCB(cart)
-      });
+        }
+      )
+
     }
 
   }

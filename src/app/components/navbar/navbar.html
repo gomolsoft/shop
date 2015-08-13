@@ -12,6 +12,7 @@
         <li ng-class="{ active: vm.isActive('/products')}" ><a ng-href="#/products">Produkte</a></li>
         <li ng-class="{ active: vm.isActive('/customcenter')}" ><a ng-href="#/customcenter">Kundencenter</a></li>
         <li ng-class="{ active: vm.isActive('/help')}"><a ng-href="#/help">Hilfe</a></li>
+        <li ><a ng-href="#/cart"><my-cart></my-cart></a></li>
 
         <li ng-class="login" ng-if="!vm.isLoggedIn()">
           <button type="button" class="btn btn-default btn-sm" ng-click="vm.onLogin()">
@@ -19,11 +20,7 @@
           </button>
         </li>
 
-        <li>
-            <input type="text" class="form-control" placeholder="Search">
-        </li>
       </ul>
-
     </div>
   </div>
 </nav>

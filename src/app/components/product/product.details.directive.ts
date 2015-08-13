@@ -33,6 +33,7 @@ module shop {
     private shopping_quantity: number
     private shoppingCartProvider: ShoppingCartProvider
     private cart : ICart
+    private cartItmCnt: number
 
     constructor(moment: moment.MomentStatic, $location: ng.ILocationService, ShoppingCartProvider: ShoppingCartProvider) {
       this.shopping_quantity=1;
@@ -46,8 +47,13 @@ module shop {
       return product.discount > 0;
     }
 
+    cartUpdate(cart : ICart) {
+      this.cart = cart
+      this.cartItmCnt = cart.item.length
+    }
+
     addToCart(product: IProduct) {
-      this.shoppingCartProvider.addToShoppingCart((cart) => this.cart = cart, product.productId, this.shopping_quantity)
+      this.shoppingCartProvider.addToShoppingCart((cart) => this.cartUpdate(cart), product.productId, this.shopping_quantity)
     }
   }
 }
