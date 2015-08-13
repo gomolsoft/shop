@@ -47,7 +47,7 @@ module shop {
     }
 
     addToCart(product: IProduct) {
-      this.shoppingCartProvider.addToShoppingCart((cart) => this.cart = cart, product.id, this.shopping_quantity)
+      this.shoppingCartProvider.addToShoppingCart((cart) => this.cart = cart, product.productId, this.shopping_quantity)
     }
   }
 }
