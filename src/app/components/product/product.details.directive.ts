@@ -49,7 +49,7 @@ module shop {
 
     cartUpdate(cart : ICart) {
       this.cart = cart
-      this.cartItmCnt = cart.item.length
+      this.cartItmCnt = cart.items.length
     }
 
     addToCart(product: IProduct) {

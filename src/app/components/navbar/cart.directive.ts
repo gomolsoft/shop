@@ -23,11 +23,26 @@ module shop {
     private UserLoginService: UserLoginService
     private loginEventUnHandler: Function
 
-    constructor($rootScope: ng.IRootScopeService, moment: moment.MomentStatic, $location: ng.ILocationService, $modal: any ) {
+    private cart: ICart
+    private itemCnt: number
+
+    onCartEvent = (cart:ICart) => {
+      if (cart === undefined)
+        return
+
+      this.cart = cart
+      this.itemCnt = cart.items.length
+    }
+
+    constructor(ShoppingCartProvider: ShoppingCartProvider, $rootScope: ng.IRootScopeService, moment: moment.MomentStatic, $location: ng.ILocationService, $modal: any ) {
       this.locationService = $location;
       this.$modal = $modal;
 
       this.modalInstance=null;
+      $rootScope.$on('cart', (event, args) => this.onCartEvent(args.cart));
+
+      this.onCartEvent(ShoppingCartProvider.getCart())
+
     }
   }
 }
