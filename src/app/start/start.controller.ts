@@ -13,12 +13,11 @@ module shop {
 
     }
 
-    dataloaded(products: IProduct[] ) {
-      this.datas = products
+    dataloaded( ) {
     }
 
     demo() {
-      this.dataProvider.devices((products) => this.dataloaded(products));
+      this.dataProvider.test(() => this.dataloaded());
     }
   }
 }

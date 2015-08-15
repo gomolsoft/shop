@@ -41,16 +41,15 @@ module shop {
     .constant('moment', moment)
 
     .config(Config)
-
     .config(RouterConfig)
 
     .config(['RestangularProvider',
       (RestangularProvider:restangular.IProvider) => {
-          RestangularProvider.setBaseUrl('http://localhost:8090');
-//          RestangularProvider.setBaseUrl('http://mbp.fritz.box:8080');
+//          RestangularProvider.setBaseUrl('http://localhost:8090');
+          RestangularProvider.setBaseUrl('http://mbp.fritz.box:8090');
 //          RestangularProvider.setBaseUrl('https://secure.mysmartthings.de/api');
       }
-    ])
+      ])
 
     .run(RunBlock)
 

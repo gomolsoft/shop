@@ -3,7 +3,7 @@
     <div class="navbar-header">
       <a class="navbar-brand" href="https://secure.mysmartthings.de/shop">
         <span class="glyphicon glyphicon-home"></span>My-Smart-Things</a>
-        <!-- img alt="Brand" src="..." -->
+
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
@@ -12,12 +12,29 @@
         <li ng-class="{ active: vm.isActive('/products')}" ><a ng-href="#/products">Produkte</a></li>
         <li ng-class="{ active: vm.isActive('/customcenter')}" ><a ng-href="#/customcenter">Kundencenter</a></li>
         <li ng-class="{ active: vm.isActive('/help')}"><a ng-href="#/help">Hilfe</a></li>
-        <li ><a ng-href="#/cart"><my-cart></my-cart></a></li>
+
 
         <li ng-class="login" ng-if="!vm.isLoggedIn()">
           <button type="button" class="btn btn-default btn-sm" ng-click="vm.onLogin()">
             <span class="glyphicon glyphicon-lock" aria-hidden="true"></span> Login
           </button>
+        </li>
+
+        <li ><a ng-href="#/cart"><my-cart></my-cart></a></li>
+
+        <li>
+        <div class="btn-group" dropdown keyboard-nav>
+          <button id="simple-btn-keyboard-nav" type="button" class="btn btn-primary" dropdown-toggle>
+            Dropdown with keyboard navigation <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="simple-btn-keyboard-nav">
+            <li role="menuitem"><a href="#">Action</a></li>
+            <li role="menuitem"><a href="#">Another action</a></li>
+            <li role="menuitem"><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li role="menuitem"><a href="#">Separated link</a></li>
+          </ul>
+        </div>
         </li>
 
       </ul>

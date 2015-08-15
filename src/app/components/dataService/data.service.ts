@@ -84,6 +84,13 @@ module shop {
           productCB(product)
       });
     }
+
+    test (testCB:() => void): void {
+      this.restangular.all('product').get('test').then( (data: IProduct[]) => {
+        testCB()
+      });
+    }
+
   }
 
 }

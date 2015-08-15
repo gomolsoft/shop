@@ -10,18 +10,13 @@ module shop {
       restrict: 'E',
       templateUrl: 'app/components/navbar/cart.html',
       controller: CartController,
-      controllerAs: 'vm',
+      controllerAs: 'cart',
       bindToController: true
     };
   }
 
   /** @ngInject */
   class CartController {
-    private locationService: ng.ILocationService;
-    private $modal: any
-    private modalInstance: any
-    private UserLoginService: UserLoginService
-    private loginEventUnHandler: Function
 
     private cart: ICart
     private itemCnt: number
@@ -34,15 +29,9 @@ module shop {
       this.itemCnt = cart.items.length
     }
 
-    constructor(ShoppingCartProvider: ShoppingCartProvider, $rootScope: ng.IRootScopeService, moment: moment.MomentStatic, $location: ng.ILocationService, $modal: any ) {
-      this.locationService = $location;
-      this.$modal = $modal;
-
-      this.modalInstance=null;
+    constructor(ShoppingCartProvider: ShoppingCartProvider, $rootScope: ng.IRootScopeService ) {
       $rootScope.$on('cart', (event, args) => this.onCartEvent(args.cart));
-
       this.onCartEvent(ShoppingCartProvider.getCart())
-
     }
   }
 }
