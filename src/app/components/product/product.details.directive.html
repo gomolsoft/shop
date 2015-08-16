@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-12" >
-
+      hhh
       <div class="col-xs-6 col-sm-6">
         <img ng-src="{{ product.apiProduct.img }}" class="img-responsive" alt="a" />
 
@@ -22,6 +22,7 @@
               </div>
 
               <div class="col-xs-12 c-ol-ms-6">
+
                 <!-- Sondern-Angebot -->
                 <div class="pull-right" ng-if="pctddtct.isOffer(product.apiProduct)">
                   <button type="button" class="btn btn-danger btn-lg">
@@ -39,13 +40,14 @@
               </div>
             </div>
           </div>
+
           <div class="row addtocart">
             <div class="btn-block">
               <input type="text" data-ng-model="pctddtct.shopping_quantity" value="1" popover="Bitte hier die gewünscht Menge eingeben" popover-trigger="focus" class="form-control" style="width: 35px; height: 45px; position: absolute;">
               <button class="btn btn-success btn-lg btn-block" style=" height: 45px;" ng-click="pctddtct.addToCart(product.apiProduct)">in den Warenkorb</button>
             </div>
           </div>
-          <!-- -->
+
         </div>
 
         <div ng-bind-html="product.detailLongDescription"></div>
@@ -54,6 +56,23 @@
   </div>
   <div class="row">
     <div class="col-xs-12 col-sm-12" >
+      <tabset>
+        <tab>
+          <tab-heading>
+            <i class="glyphicon glyphicon-book"></i>&nbsp;Technische Details
+          </tab-heading>
+          <div ng-bind-html="product.tecnicalDetailsDescription"></div>
+        </tab>
+
+        <tab>
+          <tab-heading>
+            <i class="glyphicon glyphicon-share"></i>&nbsp;Bewertung
+          </tab-heading>
+          <bewertung></bewertung>
+        </tab>
+
+      </tabset>
+
     </div>
   </div>
 </div>

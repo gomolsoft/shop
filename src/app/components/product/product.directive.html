@@ -3,13 +3,12 @@
     <div class="offer " ng-class="{'offer-danger':pctdct.isOffer(product), 'offer-info':!pctdct.isOffer(product)}"  >
       <div class="offer-content">
         <img ng-src="{{ product.img }}" class="img-responsive" alt="a" />
-        <b class="lead" data-ng-bind="product.name" />
-
+        <div class="lead" data-ng-bind="product.name" ></div>
         <p ng-if="pctdct.isOffer(product)" class="text-danger">
           bis zu {{ product.discount }}% Rabatt
         </p>
 
-        <div class="">
+        <div >
           <p data-ng-bind="product.shortdescription"/>
           <div class="priceholder">
               <div class="row">
@@ -32,13 +31,11 @@
           </div>
         </div>
       </div>
-
       <div ng-if="pctdct.isOffer(product)" class="shape">
         <div class="shape-text">
           {{ product.discount }}%
         </div>
       </div>
-
     </div>
   </div>
 </div>
